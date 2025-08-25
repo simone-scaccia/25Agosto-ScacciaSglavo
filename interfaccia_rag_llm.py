@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 
 # Crea un dizionario vuoto nella sessione streamlit
 if "uploaded_files" not in st.session_state:
@@ -44,3 +45,10 @@ with st.sidebar:
             st.session_state.overlap = overlap
             st.success("Settings saved!")
             
+            save_dir = "one_piece_doc"
+            os.makedirs(save_dir, exist_ok=True)  # Crea la cartella se non esiste
+
+            for filename, content in st.session_state.uploaded_files_content.items():
+                file_path = os.path.join(save_dir, filename)
+                with open(file_path, "w", encoding="utf-8") as f:
+                    f.write(content.decode("utf-8"))  # Decodifica da bytes a stringa
