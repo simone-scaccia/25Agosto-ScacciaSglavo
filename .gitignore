@@ -1,0 +1,4 @@
+.env
+faiss_index_example
+documents
+__pycache__

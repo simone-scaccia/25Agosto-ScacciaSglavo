@@ -52,3 +52,7 @@ with st.sidebar:
                 file_path = os.path.join(save_dir, filename)
                 with open(file_path, "w", encoding="utf-8") as f:
                     f.write(content.decode("utf-8"))  # Decodifica da bytes a stringa
+            
+            # Chiama rag_faiss_lmstudio.py
+            import rag_faiss_lmstudio
+            rag_faiss_lmstudio.main()
